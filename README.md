@@ -41,7 +41,7 @@ These examples showcase just a few of the myriad ways the Events Notification Ap
    Begin by cloning the repository or downloading the source code to your local machine.
 
    ```
-   git clone https://github.com/yourrepository/events-notification.git
+   git clone https://github.com/protteveel/events
    cd events-notification
    ```
 
