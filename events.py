@@ -75,13 +75,13 @@ def show_notification(event, events):
                 # Determine if time should be displayed as negative
                 prefix = "-" if delta.total_seconds() < 0 else ""
                 # Change font color based on the time remaining
-                color = "red" if delta.total_seconds() < 0 else "green"
+                color = config.get('Notification', 'inactive_color') if delta.total_seconds() < 0 else config.get('Notification', 'active_color')
                 # Calculate absolute delta to avoid negative in format
                 abs_delta = abs(delta)
                 hours, remainder = divmod(abs_delta.seconds, 3600)
                 minutes = remainder // 60
                 
-                updated_message = f"{event['description']} ({event['duration']})\n{prefix}{hours:02d}:{minutes:02d} until the next event."
+                updated_message = f"{event['time']} - {event['description']} ({event['duration']})\n{prefix}{hours:02d}:{minutes:02d} until the next event."
                 message_var.set(updated_message)
                 message_label.config(fg=color)  # Update font color based on time remaining
             else:
